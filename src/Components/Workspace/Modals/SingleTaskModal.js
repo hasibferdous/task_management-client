@@ -19,6 +19,7 @@ import DateDropDown from "../SingleTaskModalDropDown/DateDropDown";
 import MoveDropDown from "../SingleTaskModalDropDown/MoveDropDown";
 import CopyDropDown from "../SingleTaskModalDropDown/CopyDropDown";
 import { AuthContext } from "../../../Context/UserContext";
+import CheckList from "../../CheckList/CheckList";
 
 const SingleTaskModal = () => {
   const buttonStyle =
@@ -72,6 +73,8 @@ const SingleTaskModal = () => {
               </form>
               <br />
 
+              {/*---Task Checklist Section [need Some Processing for dynamic]--- */}
+              <CheckList />
               {/*-------------comments/Activity section----------- */}
 
               <div className="text-gray-600 mt-8">
