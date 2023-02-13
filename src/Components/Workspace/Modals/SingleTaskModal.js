@@ -19,8 +19,12 @@ import MoveDropDown from "../SingleTaskModalDropDown/MoveDropDown";
 import { AuthContext } from "../../../Context/UserContext";
 import useMembersOfCurrentWorkspace from "../../../hooks/useMembersOfCurrentWorkspace";
 import { set } from "date-fns/esm";
+import CheckList from "../../CheckList/CheckList";
 
 const SingleTaskModal = () => {
+
+  const [showCheckList, setShowCheckList] = useState(false);
+
   const buttonStyle = "dropdown dropdown-left flex items-center p-2 space-x-3 rounded-md btn-ghost bg-gray-800 btn-sm text-gray-400";
   const { boardItems, setBoardItems, currentTask, user, logOut, currentWorkspace } = useContext(AuthContext);
   const [members] = useMembersOfCurrentWorkspace(currentWorkspace, logOut);
@@ -179,7 +183,9 @@ const SingleTaskModal = () => {
                 ></textarea>
               </form>
               <br />
-
+              {/* Show and hide Checklist component start */}
+              {showCheckList && <CheckList currentTask={currentTask} />}
+              {/* Show and hide Checklist component end */}
               {/*-------------comments/Activity section----------- */}
 
               <div className="text-gray-600 mt-8">
@@ -247,7 +253,7 @@ const SingleTaskModal = () => {
                         <MembersDropDown assignORremoveMember={assignORremoveMember}></MembersDropDown>
                       </Link>
                     </li>
-                    <li className="">
+                    <li onClick={() => setShowCheckList(!showCheckList)} className="">
                       <Link
                         rel="noopener noreferrer"
                         href="#"
